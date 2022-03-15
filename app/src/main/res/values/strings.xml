@@ -9,4 +9,18 @@
     <string name="button7">bt7</string>
     <string name="button8">bt8</string>
     <string name="hello_drevodavec">Hello drevodavec!</string>
+    <string name="button_size_00">S01</string>
+    <string name="button_size_02">S02</string>
+    <string name="button_size_03">S03</string>
+    <string name="button_size_04">S04</string>
+    <string name="button_size_05">S05</string>
+    <string name="button_size_06">S06</string>
+    <string name="button_size_07">S07</string>
+    <string name="button_size_08">S08</string>
+    <string name="button_size_09">S09</string>
+    <string name="button_size_10">S10</string>
+    <string name="button_size_11">S11</string>
+    <string name="button_size_12">S12</string>
+    <string name="velkost_stromu">velkost stromu</string>
+    <string name="_15">15</string>
 </resources>

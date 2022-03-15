@@ -18,6 +18,21 @@ class MainActivity : AppCompatActivity() {
         "smr",
         "bor"
     )
+
+    private val treeSizes = listOf(
+        "100",
+        "120",
+        "140",
+        "160",
+        "180",
+        "190",
+        "200",
+        "220",
+        "240",
+        "260",
+        "280",
+        "300"
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -47,6 +62,41 @@ class MainActivity : AppCompatActivity() {
                 if (it is Button) {
                     val textView = findViewById<TextView>(R.id.TextViewTreeSelection)
                     textView.text = it.text
+                }
+            }
+        }
+
+
+
+
+        val tableLayoutTreeSizes = findViewById<TableLayout>(R.id.TableLayoutTreeSizes)
+        var treeSizesBtnCnt = 0
+        for (i in 0..tableLayoutTreeSizes.childCount) {
+            val child = tableLayoutTreeSizes.getChildAt(i)
+            if (child is TableRow) {
+                treeSizesBtnCnt+= child.childCount
+            }
+        }
+        val buttonsSizes: Array<Button?> = arrayOfNulls<Button>(treeSizesBtnCnt)
+        buttonsSizes[0] = findViewById(R.id.button_size_00)
+        buttonsSizes[1] = findViewById(R.id.button_size_02)
+        buttonsSizes[2] = findViewById(R.id.button_size_03)
+        buttonsSizes[3] = findViewById(R.id.button_size_04)
+        buttonsSizes[4] = findViewById(R.id.button_size_05)
+        buttonsSizes[5] = findViewById(R.id.button_size_06)
+        buttonsSizes[6] = findViewById(R.id.button_size_07)
+        buttonsSizes[7] = findViewById(R.id.button_size_08)
+        buttonsSizes[8] = findViewById(R.id.button_size_09)
+        buttonsSizes[9] = findViewById(R.id.button_size_10)
+        buttonsSizes[10] = findViewById(R.id.button_size_11)
+        buttonsSizes[11] = findViewById(R.id.button_size_12)
+
+        treeSizes.mapIndexed { index, s -> buttonsSizes[index]?.text = s}
+        for(button in buttonsSizes) {
+            button?.setOnClickListener {
+                if (it is Button) {
+                    val editTextTreeSize = findViewById<TextView>(R.id.EditTextTreeSize)
+                    editTextTreeSize.text = it.text
                 }
             }
         }
