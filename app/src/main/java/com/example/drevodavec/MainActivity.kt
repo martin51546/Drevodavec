@@ -19,20 +19,9 @@ class MainActivity : AppCompatActivity() {
         "bor"
     )
 
-    private val treeSizes = listOf(
-        "100",
-        "120",
-        "140",
-        "160",
-        "180",
-        "190",
-        "200",
-        "220",
-        "240",
-        "260",
-        "280",
-        "300"
-    )
+    private val sizeNumbers = generateSequence(10) { it + 4 } // `it` is the previous element
+    private val treeSizes = sizeNumbers.take(12).toList().map { it.toString() }.toTypedArray()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
