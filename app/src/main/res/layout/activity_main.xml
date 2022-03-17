@@ -117,7 +117,7 @@
             android:ems="10"
             android:hint="@string/velkost_stromu"
             android:importantForAutofill="no"
-            android:inputType="numberSigned|textPersonName"
+            android:inputType="numberSigned"
             android:minHeight="48dp"
             android:text="@string/_15" />
 
