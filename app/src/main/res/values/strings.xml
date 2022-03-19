@@ -21,6 +21,12 @@
     <string name="button_size_10">S10</string>
     <string name="button_size_11">S11</string>
     <string name="button_size_12">S12</string>
+    <string name="button_size_13">S13</string>
+    <string name="button_size_14">S14</string>
+    <string name="button_size_15">S15</string>
+    <string name="button_size_16">S16</string>
+    <string name="button_size_17">S17</string>
+    <string name="button_size_18">S18</string>
     <string name="velkost_stromu">velkost stromu</string>
     <string name="_15">15</string>
     <string name="sync">Sync</string>

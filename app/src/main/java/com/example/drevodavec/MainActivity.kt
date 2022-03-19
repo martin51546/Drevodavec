@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     private val sizeNumbers = generateSequence(10) { it + 4 } // `it` is the previous element
-    private val treeSizes = sizeNumbers.take(12).toList().map { it.toString() }.toTypedArray()
+    private val treeSizes = sizeNumbers.take(18).toList().map { it.toString() }.toTypedArray()
     private var outputFileName = "example.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +84,12 @@ class MainActivity : AppCompatActivity() {
         buttonsSizes[9] = findViewById(R.id.button_size_10)
         buttonsSizes[10] = findViewById(R.id.button_size_11)
         buttonsSizes[11] = findViewById(R.id.button_size_12)
+        buttonsSizes[12] = findViewById(R.id.button_size_13)
+        buttonsSizes[13] = findViewById(R.id.button_size_14)
+        buttonsSizes[14] = findViewById(R.id.button_size_15)
+        buttonsSizes[15] = findViewById(R.id.button_size_16)
+        buttonsSizes[16] = findViewById(R.id.button_size_17)
+        buttonsSizes[17] = findViewById(R.id.button_size_18)
 
         treeSizes.mapIndexed { index, s -> buttonsSizes[index]?.text = s}
         for(button in buttonsSizes) {
