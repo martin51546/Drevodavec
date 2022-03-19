@@ -1,11 +1,13 @@
 package com.example.drevodavec
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import java.io.File
+import java.io.IOException
+
 
 class MainActivity : AppCompatActivity() {
     private val treeNames = listOf(
@@ -34,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         val buttons: Array<Button?> = arrayOfNulls<Button>(treeBtnCnt)
         buttons[0] = findViewById(R.id.button)
         buttons[1] = findViewById(R.id.button2)
@@ -54,8 +55,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
+        val textView = findViewById<TextView>(R.id.TextViewTreeSelection)
+        textView.text = buttons[0]?.text ?: treeNames[0]
 
 
         val tableLayoutTreeSizes = findViewById<TableLayout>(R.id.TableLayoutTreeSizes)
@@ -89,6 +90,35 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        val buttonSync = findViewById<Button>(R.id.button_save)
+        buttonSync.setOnClickListener {
+            val dir = getExternalFilesDir(this)
+            val file = File(dir.toString(), "example.txt")
+           try {
+                val treeName = findViewById<TextView>(R.id.TextViewTreeSelection)
+                val treeSize = findViewById<EditText>(R.id.EditTextTreeSize)
+                val textOut = "${treeName.text};${treeSize.text}\n"
+                file.appendText(textOut)
+                Toast.makeText(applicationContext,"${textOut.trim()} pridane",Toast.LENGTH_SHORT).show()
+            } catch (e: IOException) {
+                println("Text write Exception $e")
+                val alertDialog = AlertDialog.Builder(this@MainActivity).create()
+                alertDialog.setTitle("Chyba pri zapise")
+                alertDialog.setMessage(e.message)
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK"
+                ) { dialog, _ -> dialog.dismiss() }
+                alertDialog.show()
+            }
+        }
+
+    }
+
+    private fun getExternalFilesDir(context: Context): File? {
+        val dir1 = context.getExternalFilesDir(null as String?)
+        println("FML: ${dir1?.absolutePath}")
+        dir1 ?: context.filesDir
+        return dir1
     }
 
 }

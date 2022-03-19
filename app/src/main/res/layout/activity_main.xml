@@ -124,7 +124,7 @@
         <TableLayout
             android:id="@+id/TableLayoutTreeSizes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -242,6 +242,18 @@
                     android:text="@string/button_size_12" />
             </TableRow>
         </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sync" />
+        </LinearLayout>
 
     </LinearLayout>
 
