@@ -253,6 +253,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sync" />
+
+            <Button
+                android:id="@+id/button_new_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/new_file" />
         </LinearLayout>
 
     </LinearLayout>

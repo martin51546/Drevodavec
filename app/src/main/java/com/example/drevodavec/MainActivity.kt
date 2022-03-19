@@ -7,6 +7,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 import java.io.IOException
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +25,12 @@ class MainActivity : AppCompatActivity() {
 
     private val sizeNumbers = generateSequence(10) { it + 4 } // `it` is the previous element
     private val treeSizes = sizeNumbers.take(12).toList().map { it.toString() }.toTypedArray()
+    private var outputFileName = "example.txt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        updateOutFileName()
         val tableLayoutTree = findViewById<TableLayout>(R.id.TableLayoutTree)
         var treeBtnCnt = 0
         for (i in 0..tableLayoutTree.childCount) {
@@ -94,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         val buttonSync = findViewById<Button>(R.id.button_save)
         buttonSync.setOnClickListener {
             val dir = getExternalFilesDir(this)
-            val file = File(dir.toString(), "example.txt")
+            val file = File(dir.toString(), outputFileName)
            try {
                 val treeName = findViewById<TextView>(R.id.TextViewTreeSelection)
                 val treeSize = findViewById<EditText>(R.id.EditTextTreeSize)
@@ -112,6 +116,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val buttonCreateNewFile = findViewById<Button>(R.id.button_new_file)
+        buttonCreateNewFile.setOnClickListener {
+            updateOutFileName()
+        }
+    }
+
+
+    private fun  updateOutFileName() {
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss")
+        outputFileName = "stromy_" + current.format(formatter).toString() + ".txt"
+        Toast.makeText(applicationContext,"Používam $outputFileName",Toast.LENGTH_SHORT).show()
     }
 
     private fun getExternalFilesDir(context: Context): File? {
